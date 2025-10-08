@@ -31,7 +31,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-base-200" data-theme={theme}>
+    <div className="min-h-screen bg-base-200 flex flex-col" data-theme={theme}>
       <Navbar
         theme={theme}
         onThemeChange={setTheme}
@@ -41,22 +41,10 @@ function App() {
         onClearHistory={clearHistory}
       />
 
-      <main className="container mx-auto px-4 py-12">
+      <main className="container mx-auto px-4 py-12 flex-1">
         <div className="card bg-base-100 shadow-xl mb-8">
           <div className="card-body">
-            <TextInput value={text} onChange={setText} />
-            <div className="card-actions justify-end mt-4">
-              <button
-                className="btn btn-primary"
-                onClick={handleSaveToHistory}
-                disabled={!text.trim()}
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
-                </svg>
-                履歴に保存
-              </button>
-            </div>
+            <TextInput value={text} onChange={setText} onSaveToHistory={handleSaveToHistory} />
           </div>
         </div>
 

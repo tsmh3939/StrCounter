@@ -19,7 +19,7 @@ export default function Stats({
 }: StatsProps) {
   return (
     <div className="space-y-6">
-      <div className="stats stats-vertical lg:stats-horizontal shadow-xl w-full">
+      <div className="stats stats-vertical lg:stats-horizontal shadow-xl w-full bg-base-100">
         <div className="stat">
           <div className="stat-title">総文字数</div>
           <div className="stat-value text-primary">{totalCharacters}</div>
@@ -42,7 +42,7 @@ export default function Stats({
       <div className="card bg-base-100 shadow-xl">
         <div className="card-body">
           <h2 className="card-title">文字種別のカウント</h2>
-          <div className="stats stats-vertical lg:stats-horizontal shadow">
+          <div className="stats stats-vertical lg:stats-horizontal shadow-xl bg-base-200">
             <div className="stat">
               <div className="stat-title">空白文字</div>
               <div className="stat-value text-sm">{totalSpaces}</div>

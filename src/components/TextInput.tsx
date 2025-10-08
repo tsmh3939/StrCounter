@@ -3,9 +3,10 @@ import { useState } from 'react'
 interface TextInputProps {
   value: string
   onChange: (value: string) => void
+  onSaveToHistory: () => void
 }
 
-export default function TextInput({ value, onChange }: TextInputProps) {
+export default function TextInput({ value, onChange, onSaveToHistory }: TextInputProps) {
   const [copied, setCopied] = useState(false)
 
   const handleClear = () => {
@@ -27,9 +28,16 @@ export default function TextInput({ value, onChange }: TextInputProps) {
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
-        <label className="label">
-          <span className="label-text text-lg font-semibold">テキストを入力してください</span>
-        </label>
+        <button
+          className="btn btn-sm btn-primary"
+          onClick={onSaveToHistory}
+          disabled={!value.trim()}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+          </svg>
+          履歴に保存
+        </button>
         <div className="flex gap-2">
           <button
             className={`btn btn-sm ${copied ? 'btn-success' : 'btn-primary btn-outline'}`}
@@ -65,7 +73,7 @@ export default function TextInput({ value, onChange }: TextInputProps) {
         </div>
       </div>
       <textarea
-        className="textarea textarea-bordered w-full h-96 text-base resize-none focus:textarea-primary focus:outline-none"
+        className="textarea textarea-bordered w-full h-48 sm:h-64 lg:h-96 text-base resize-none focus:textarea-primary focus:outline-none"
         placeholder="ここにテキストを貼り付けてください..."
         value={value}
         onChange={(e) => onChange(e.target.value)}
