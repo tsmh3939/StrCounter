@@ -9,7 +9,6 @@ import { useHistory } from './hooks/useHistory'
 
 function App() {
   const [text, setText] = useState('')
-  const [theme, setTheme] = useState('dim')
   const {
     totalCharacters,
     totalLines,
@@ -31,10 +30,8 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-base-200 flex flex-col" data-theme={theme}>
+    <div className="min-h-screen bg-base-200 flex flex-col" data-theme="dim">
       <Navbar
-        theme={theme}
-        onThemeChange={setTheme}
         history={history}
         onSelectHistory={handleLoadFromHistory}
         onDeleteHistory={deleteHistory}

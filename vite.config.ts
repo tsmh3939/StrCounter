@@ -10,20 +10,20 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['src/assets/*.svg'],
+      injectRegister: 'inline',
+      includeAssets: ['icon.svg'],
       manifest: {
         name: 'StrCounter',
         short_name: 'StrCounter',
         description: '文字数カウンターアプリ',
-        theme_color: '#ffffff',
-        background_color: '#ffffff',
         display: 'standalone',
         icons: [
           {
-            src: '/src/assets/add_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg',
-            sizes: '24x24',
-            type: 'image/svg+xml'
-          }
+            src: '/icon.svg',
+            sizes: 'any',
+            type: 'image/svg+xml',
+            purpose: 'any maskable'
+          },
         ]
       },
       workbox: {
