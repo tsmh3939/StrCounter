@@ -17,6 +17,7 @@ export default defineConfig({
         short_name: 'StrCounter',
         description: '文字数カウンターアプリ',
         display: 'standalone',
+        theme_color: '#2A303C',
         icons: [
           {
             src: '/icon.svg',
