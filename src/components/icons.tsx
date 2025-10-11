@@ -20,7 +20,7 @@ interface UniversalIconProps extends IconProps {
 }
 
 
-export function Icon({ className = 'h-4 w-4', name, strokeWidth = 2 }: UniversalIconProps) {
+export function Icon({ className = 'h-5 w-5', name, strokeWidth = 2 }: UniversalIconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

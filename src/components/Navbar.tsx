@@ -12,7 +12,6 @@ export default function Navbar({
   history,
   onSelectHistory,
   onDeleteHistory,
-  onClearHistory
 }: NavbarProps) {
   return (
     <div className="navbar bg-base-100 shadow-lg">
@@ -25,7 +24,6 @@ export default function Navbar({
           history={history}
           onSelect={onSelectHistory}
           onDelete={onDeleteHistory}
-          onClearAll={onClearHistory}
         />
       </div>
     </div>
