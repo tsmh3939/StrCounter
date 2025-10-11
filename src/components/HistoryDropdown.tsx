@@ -1,18 +1,17 @@
 import { useState } from 'react'
 import type { HistoryItem } from '../hooks/useHistory'
+import { Icon } from './icons'
 
 interface HistoryDropdownProps {
   history: HistoryItem[]
   onSelect: (text: string) => void
   onDelete: (id: string) => void
-  onClearAll: () => void
 }
 
 export default function HistoryDropdown({
   history,
   onSelect,
-  onDelete,
-  onClearAll
+  onDelete
 }: HistoryDropdownProps) {
   const [isOpen, setIsOpen] = useState(false)
   const formatDate = (timestamp: number) => {
@@ -46,9 +45,7 @@ export default function HistoryDropdown({
   return (
     <>
       <button className="btn btn-ghost gap-1" onClick={() => setIsOpen(true)}>
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
+        <Icon name="clock" className="h-5 w-5" />
         <span>履歴</span>
         {history.length > 0 && (
           <span className="badge badge-primary badge-sm">{history.length}</span>
@@ -57,28 +54,16 @@ export default function HistoryDropdown({
 
       {isOpen && (
         <div className="fixed inset-0 z-50 bg-black/50" onClick={() => setIsOpen(false)}>
-          <div className="fixed inset-x-0 top-16 bottom-0 bg-base-200 overflow-hidden" onClick={(e) => e.stopPropagation()}>
+          <div className="fixed inset-x-0 top-0 bottom-0 bg-base-200 overflow-hidden" onClick={(e) => e.stopPropagation()}>
             <div className="h-full flex flex-col">
               <div className="bg-base-100 p-4 shadow-lg flex justify-between items-center">
                 <h2 className="text-2xl font-bold">履歴</h2>
-                <div className="flex gap-2">
-                  {history.length > 0 && (
-                    <button
-                      className="btn btn-sm btn-error btn-outline"
-                      onClick={onClearAll}
-                    >
-                      すべて削除
-                    </button>
-                  )}
-                  <button
-                    className="btn btn-sm btn-circle btn-ghost"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </button>
-                </div>
+                <button
+                  className="btn btn-sm btn-circle btn-ghost"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <Icon name="close" className="h-6 w-6" />
+                </button>
               </div>
 
               <div className="flex-1 overflow-y-auto p-4">
@@ -107,9 +92,7 @@ export default function HistoryDropdown({
                                 onDelete(item.id)
                               }}
                             >
-                              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                              </svg>
+                              <Icon name="close" />
                             </button>
                           </div>
                         </div>
