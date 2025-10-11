@@ -17,7 +17,6 @@ export default defineConfig({
         short_name: 'StrCounter',
         description: '文字数カウンターアプリ',
         display: 'standalone',
-        display_override: ['window-controls-overlay'],
         icons: [
           {
             src: '/icon.svg',
