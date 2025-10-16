@@ -16,7 +16,15 @@ export default defineConfig({
         name: 'StrCounter',
         short_name: 'StrCounter',
         description: '文字数カウンターアプリ',
+        lang: 'ja',
+        dir: 'ltr',
         display: 'standalone',
+        orientation: 'any',
+        start_url: '/',
+        scope: '/',
+        background_color: '#2A303C',
+        theme_color: '#2A303C',
+        categories: ['productivity', 'utilities'],
         icons: [
           {
             src: '/icon.svg',
