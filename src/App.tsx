@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
 import TextInput from './components/TextInput'
@@ -7,8 +7,20 @@ import Footer from './components/Footer'
 import { useCharacterCounter } from './hooks/useDigitCounter'
 import { useHistory } from './hooks/useHistory'
 
+const TEXT_STORAGE_KEY = 'strcounter_current_text'
+
 function App() {
-  const [text, setText] = useState('')
+  const [text, setText] = useState(() => {
+    // 初回読み込み時にsessionStorageからテキストを復元
+    const savedText = sessionStorage.getItem(TEXT_STORAGE_KEY)
+    return savedText || ''
+  })
+
+  // テキストが変更されるたびにsessionStorageに保存
+  useEffect(() => {
+    sessionStorage.setItem(TEXT_STORAGE_KEY, text)
+  }, [text])
+
   const {
     totalCharacters,
     totalLines,
