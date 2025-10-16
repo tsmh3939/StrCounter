@@ -32,4 +32,8 @@ export default defineConfig({
     })
   ],
   base: './',
+  server: {
+    host: true,	// サーバーがリッスンするホストアドレスを指定
+    port: 5173,	// 開発サーバーが使用するポート番号
+  },
 })
