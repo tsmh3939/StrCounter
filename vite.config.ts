@@ -18,7 +18,7 @@ export default defineConfig({
         description: '文字数カウンターアプリ',
         lang: 'ja',
         dir: 'ltr',
-        display: 'standalone',
+        display: 'minimal-ui',
         orientation: 'any',
         start_url: '/',
         scope: '/',
